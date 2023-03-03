@@ -1,0 +1,11 @@
+---
+- name: Give John Doe ssh access
+  hosts: all
+  tasks:
+     - name: Set authorized key in alternate location
+       authorized_key:
+         user: root
+         state: present
+         key: "{{ lookup('file', '/home/thor/playbooks/john_doe.pub') }}"
+         path: /etc/ssh/authorized_keys/john
+   

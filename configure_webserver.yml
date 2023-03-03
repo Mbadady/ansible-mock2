@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - name: Configure nginx
+      yum:
+        name: nginx
+        state: present
+        
+    - name: copy to remote server
+      copy:
+        src: /home/thor/playbooks/index.html
+        dest: /usr/share/nginx/html
+    - name: start nginx
+      service:
+        name: nginx
+        state: started

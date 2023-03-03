@@ -1,0 +1,9 @@
+---
+- name: Run updates
+  hosts: all
+  tasks:
+    - name: Update aws cli
+      pip:
+        name: awscli
+        state: latest
+        executable: pip3
